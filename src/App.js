@@ -13,7 +13,7 @@ function App() {
             Logo
           </div>
           <ul>
-            <li> Link 1 </li>
+            <li> Link 20 </li>
             <li> Link 7 </li>
             <li> Link 3 </li>
             <li> Link 1 </li>
