@@ -101,7 +101,6 @@ class Main extends Component {
     }
 
     componentDidMount() {
-
       this.dbx = new Dropbox({ accessToken: localStorage.getItem("token") });
       this.dbx.filesListFolder({ path: "" })
         .then((res) => {
@@ -175,11 +174,13 @@ class Main extends Component {
       "to_path": `/${newName}`,
     })
     .then(res => {
+      console.log('rename', id);
       console.log('rename', res);
       console.log('rename', window.location.pathname);
 
       const newFolders = [...this.state.folders];
       const idx = newFolders.findIndex(x => x.id === id);
+      console.log('rename', idx);
       newFolders[idx] = res.metadata;
 
       this.setState({ folders: newFolders });
@@ -188,7 +189,7 @@ class Main extends Component {
 
   renameFiles = (path, id) => {
     const newName = this.state.fileRename;
-
+    console.log('success', id);
 
     let splitPath = path.split(".")
     let fileType = splitPath[1];
@@ -198,19 +199,28 @@ class Main extends Component {
       "to_path": `/${newName}.${fileType}`,
     })
     .then(res => {
-      console.log('rename', res);
+      console.log('rename', id);
+      console.log('rename', res.metadata.id);
       console.log('rename', window.location.pathname);
+      
+      const newFiles = [...this.state.files];
+      const idx = newFiles.findIndex(x => {
+        if (x['.tag'] === 'failure') {
+          return null
+        }
+        else {
+          console.log('rename', x)
+          return x.metadata.id === id;
+        }
+      })
 
-      if(res[".tag"] === "failure"){
-        return null
-      }
-      else {
-        const newFiles = [...this.state.files];
-        const idx = newFiles.findIndex(x => x.id === id);
-        newFiles[idx] = res.metadata;
-        console.log("test123123", idx)
-        this.setState({ files: newFiles });
-      }
+      console.log('rename', res.metadata);
+      console.log('rename', idx);
+
+      newFiles[idx] = res.metadata;
+
+      this.setState({ files: newFiles });
+      console.log('rename', newFiles)
     })
   }
 
@@ -223,24 +233,46 @@ class Main extends Component {
       let minaFiler = files.map(file => {
         let image = `data:image/jpeg;base64,${file.thumbnail}`;
 
+        
+
         let fileName
         let date_input
         let datum
         let size
         let newSize
         let i
+        let idx
+        let path
 
         if(file[".tag"] === "failure"){
           return null
         }
         else {
-          fileName = file.metadata.name;
-          date_input = new Date((file.metadata.client_modified));
+          if (file.metadata) {
+            fileName = file.metadata.name;
+            date_input = new Date((file.metadata.client_modified));
+            datum = new Date(date_input).toDateString();
+  
+            size = file.metadata.size;
+            i = Math.floor(Math.log(size) / Math.log(1024));
+            newSize = (size / Math.pow(1024, i)).toFixed(2) * 1 + ""+['B', 'kB', 'MB', 'GB', 'TB'][i];
+
+            idx = file.metadata.id;
+            path = file.metadata.path_display;
+          }
+          else {
+          fileName = file.name;
+          date_input = new Date((file.client_modified));
           datum = new Date(date_input).toDateString();
 
-          size = file.metadata.size;
+          size = file.size;
           i = Math.floor(Math.log(size) / Math.log(1024));
           newSize = (size / Math.pow(1024, i)).toFixed(2) * 1 + ""+['B', 'kB', 'MB', 'GB', 'TB'][i];
+
+          idx = file.id;
+          path = file.path_display;
+          }
+          console.log('kung2', file);
         }
       
         return (
@@ -248,13 +280,13 @@ class Main extends Component {
             <td>
             <div style={{ display: 'flex' }}>
               <img src={image} style={{ height: '42px', width: '42px' }} alt=""/>
-              <a onClick={() => this.downloadFile(file.metadata.path_display)} href={URL} download={fileName}>{fileName}</a>
+              <a onClick={() => this.downloadFile(path)} href={URL} download={fileName}>{fileName}</a>
 
               <span>{" Latest change: " + datum}</span>
               <span>{" Filesize: " + newSize}</span>
               
               <input className="tdInput" type="text" onChange={this.updateFileName.bind(this)}/>
-              <button className="tdButton" onClick={() => this.renameFiles(file.metadata.path_display, file.metadata.id)}>Rename</button>
+              <button className="tdButton" onClick={() => this.renameFiles(path, idx)}>Rename</button>
               
             </div>
             </td>
