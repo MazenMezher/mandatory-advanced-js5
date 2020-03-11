@@ -155,7 +155,7 @@ starFolder = (folder) => {
     })
   }
 
- componentDidMount() {
+componentDidMount() {
   this.setState({
     starArray: JSON.parse(window.localStorage.getItem("favorites") || "[]"),
     starArrayFolders: JSON.parse(window.localStorage.getItem("favoritesFolders") || "[]"),
@@ -278,10 +278,6 @@ starFolder = (folder) => {
                 <Link to={`/main${folder.path_display}`}>
                   {folder.name}
                 </Link>
-                {/* <input className="checkboxFiles" type="checkbox"  id={folder.id} onClick={this.starFile.bind(this, folder)} /> */}
-
-                    {/* <input className="input" type="text" onChange={this.updateFolderName.bind(this)}/>
-                    <button onClick={() => this.renameFolders(folder.path_display)}>Rename</button> */}
 
                     <td className="dropdownList">
                       <DropdownOptions

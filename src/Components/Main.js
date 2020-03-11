@@ -37,7 +37,7 @@ class Main extends Component {
 
 
     copy = (original_path, your_path) =>{
-     
+
       this.dbx.filesCopy({
         from_path: original_path,
         to_path: your_path,
@@ -113,7 +113,17 @@ class Main extends Component {
             entries: entries,
           })
           .then((res) => {
-            const files = res.entries;
+            const files = resFolder.entries
+            .filter(x => x[".tag"] !== "folder")
+            .map(x => {
+              const th = res.entries.find(y => y.metadata && y.metadata.id === x.id);
+
+              return {
+                metadata: x,
+                ".tag": "success",
+                thumbnail: th ? th.thumbnail : null,
+              }
+            });
             this.setState({ files: files, folders: resFolder.entries, changes:false });
           })
         })
