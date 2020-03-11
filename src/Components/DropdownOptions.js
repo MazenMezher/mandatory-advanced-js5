@@ -4,7 +4,7 @@ import ClickedOutsideRemover from './ClickedOutsideRemover'
 import DeleteWindow from './DeleteWindow'
 import NewName from './NewName'
 import CopyWindow from './CopyWindow'
-
+import MoveWindow from './MoveWindow'
 class DropdownOptions extends PureComponent{
   constructor(props){
     super(props)
@@ -12,6 +12,7 @@ class DropdownOptions extends PureComponent{
       deleteButtonClicked: false,
       reNameButtonClicked: false,
       copyButtonClicked:false,
+      moveButtonClicked:false,
 
     }
   }
@@ -51,12 +52,18 @@ class DropdownOptions extends PureComponent{
   closeCopyWindow = () =>{
     this.setState({copyButtonClicked:false})
   }
+  openMoveWindow = () =>{
+    this.setState({moveButtonClicked: true})
+  }
+  closeMoveWindow = () =>{
+    this.setState({moveButtonClicked: false})
+  }
 
 
 
   render(){
   const{onDelete,path,name,id,renameFolders,renameFiles,tag,updateFolderName,updateFileName,copy,path_display} = this.props
-  const{deleteButtonClicked,reNameButtonClicked,copyButtonClicked} = this.state
+  const{deleteButtonClicked,reNameButtonClicked,copyButtonClicked,moveButtonClicked} = this.state
 
   return(
   <>
@@ -67,7 +74,7 @@ class DropdownOptions extends PureComponent{
     <div className="dropdown-list" onClick={this.onDeleteButtonClicked}>delete</div>
     <div className="dropdown-list" onClick={this.showRename}>rename</div>
     <div className="dropdown-list" onClick={this.openCopyWindow}>copy</div>
-
+    <div className="dropdown-list" onClick={this.openMoveWindow}>move</div>
     </div>
 
   </ClickedOutsideRemover>
@@ -84,6 +91,7 @@ class DropdownOptions extends PureComponent{
   {copyButtonClicked ?
     <CopyWindow closeCopyWindow={this.closeCopyWindow} makeCopyInSameFolder={this.makeCopyInSameFolder} copy={copy} path_display={path_display}/>
      : null}
+  {moveButtonClicked ? <MoveWindow closeMoveWindow={this.closeMoveWindow} path_display={path_display}/>:null}
 
   </div>
   </>

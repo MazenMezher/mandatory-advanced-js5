@@ -16,8 +16,8 @@ class CopyFolderList extends PureComponent{
   return(
     <>
     <li className="listOfFolders" key={folder.id} onClick={this.clickAnotherFolderV2}>
-    <img src={folderImg} style={{ height: '42px', width: '42px', marginBottom:'-10px' }} alt=""/>{folder.name}<
-    /li>
+    <img src={folderImg} style={{ height: '42px', width: '42px', marginBottom:'-10px' }} alt=""/>{folder.name}
+    </li>
     </>
 
 )
