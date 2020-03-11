@@ -44,7 +44,8 @@ class Folders extends Component {
       this.props.setFolderState(newFolder)
       this.setState({starArrayFolders: newFavouriteFolders})
     })
-  }else{
+  }
+  else{
     const{files} = this.props
     let newfavoritesFiles
     this.props.dbx.filesDelete({path: path_delete})
