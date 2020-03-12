@@ -112,14 +112,12 @@ class Folders extends Component {
           return x.metadata.id === id;
         }
       })
-
       newFiles[idx] = res.metadata;
 
       this.props.setFileState(newFiles);
       this.setState({starArray: newfavoritesFiles})
     })
   }
-
 
   starFile = (file) => {
     let newStarArray;
@@ -190,9 +188,6 @@ componentDidMount() {
               if (file.metadata) {
                 starredFiles = this.state.starArray
                 .find(x => file[".tag"] !== "failure" ?  x.metadata.id === file.metadata.id : null)
-                console.log(file)
-
-
 
                 fileName = file.metadata.name;
                 date_input = new Date((file.metadata.client_modified));
@@ -231,8 +226,6 @@ componentDidMount() {
 
                   <span>{" Latest change: " + datum}</span>
                   <span>{" Filesize: " + newSize}</span>
-
-                  {/* <input className="checkboxFiles" type="checkbox"  id={file.id} onClick={this.starFile.bind(this, file)} /> */}
 
                   <td className="dropdownList">
                     <DropdownOptions
@@ -292,7 +285,6 @@ componentDidMount() {
                         copy={this.props.copy}
                       />
                     </td>
-                    
                 </div>
                 <div className="tdInputDiv" style={{display: 'flex'}}>
                     <input checked={!!starredFolders} className="checkbox" type="checkbox"  id={folder.id} onClick={this.starFolder.bind(this, folder)} />
@@ -307,7 +299,6 @@ componentDidMount() {
             console.log("test123", favfile)
 
             let image = `data:image/jpeg;base64,${favfile.thumbnail}`;
-
 
             let fileName
             let datum
@@ -383,9 +374,7 @@ componentDidMount() {
               </table>
           </div>
         )
-
     }
-
 }
 
 export default Folders
