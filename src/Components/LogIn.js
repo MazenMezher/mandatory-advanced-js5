@@ -35,7 +35,7 @@ class LogIn extends Component {
         let CLIENT_ID = 'ophwh7ganbw2c8b';
 
         let dbx = new Dropbox({ clientId: CLIENT_ID });
-        let LocalHost = 'http://localhost:3000/auth';
+        let LocalHost = 'https://wiggly-creator.surge.sh/auth';
         let authUrl = dbx.getAuthenticationUrl(LocalHost);
 
         this.setState({ LoginDropBox: authUrl});
