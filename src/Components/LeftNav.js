@@ -24,7 +24,7 @@ class LeftNav extends Component {
     render() {
         const { mainPage } = this.state;
 
-        if (mainPage) return <Redirect to="/mandatory-advanced-js5" />
+        if (mainPage) return <Redirect to="/" />
 
         return (
             <div className="sideLeft">

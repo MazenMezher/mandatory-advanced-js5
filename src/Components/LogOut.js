@@ -22,7 +22,7 @@ class LogOut extends Component {
     render() {
         const { logout } = this.state;
 
-        if (logout) return <Redirect to="/mandatory-advanced-js5" />
+        if (logout) return <Redirect to="/" />
 
         return (
             <>

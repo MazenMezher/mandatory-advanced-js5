@@ -23,7 +23,7 @@ class GetToken extends Component {
     render() {
         const { activeToken } = this.state;
 
-        if (activeToken) return <Redirect to="/mandatory-advanced-js5/main" />
+        if (activeToken) return <Redirect to="/main" />
 
         return (
             <>

@@ -53,11 +53,11 @@ class Header extends PureComponent{
     return(
       <header>
         <h1>Project X</h1>
-        <span className="pathing"><Link style={{color:'white'}} to={`/mandatory-advanced-js5/main`}>{"main>"}</Link></span>
+        <span className="pathing"><Link style={{color:'white'}} to={`/main`}>{"main>"}</Link></span>
         {links.map(link => {
           let realLink = link.split('/')
 
-          return (<span className="pathing"><Link style={{color:'white'}}  to={`/mandatory-advanced-js5/main${link}`}>{`${realLink[realLink.length-1]}>`}</Link></span>)
+          return (<span className="pathing"><Link style={{color:'white'}}  to={`/main${link}`}>{`${realLink[realLink.length-1]}>`}</Link></span>)
         })}
 
           <input

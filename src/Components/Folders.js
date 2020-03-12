@@ -281,7 +281,7 @@ class Folders extends Component {
               <div style={{ display: 'flex'}}>
               <img src={folderThumbnail} style={{ height: '42px', width: '42px' }} alt=""/>
 
-              <Link to={`/mandatory-advanced-js5/main${folder.path_display}`}>
+              <Link to={`/main${folder.path_display}`}>
                 {folder.name}
               </Link>
                   <td className="dropdownList">
@@ -352,7 +352,7 @@ class Folders extends Component {
                 <td>
                   <div style={{ display: 'flex' }}>
                     <img src={folderThumbnail} style={{ height: '42px', width: '42px' }} alt=""/>
-                    <Link to={`/mandatory-advanced-js5/main${favfolder.path_display}`}>
+                    <Link to={`/main${favfolder.path_display}`}>
                       {favfolder.name}
                     </Link>
                   </div>
