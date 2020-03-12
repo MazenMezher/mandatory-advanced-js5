@@ -32,7 +32,7 @@ class LogIn extends Component {
 
     // Denna funktionen låter oss logga in
     LogIn = () => {
-        let CLIENT_ID = 'f7m4wz025tph109';
+        let CLIENT_ID = 'ophwh7ganbw2c8b';
 
         let dbx = new Dropbox({ clientId: CLIENT_ID });
         let LocalHost = 'http://localhost:3000/auth';

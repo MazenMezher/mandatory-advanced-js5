@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Route exact path="/" component={LogIn} />
+        <Route exact path="/mandatory-advanced-js5" component={LogIn} />
         <Route path="/auth" component={GetToken} />
         <Route exact path="/main" component={Main} />
         <Route exact path="/main/:path+" component={Main} />
