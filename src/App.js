@@ -17,6 +17,7 @@ function App() {
         <Route exact path="/main/:path+" component={Main} />
       </Router>
     </div>
-  );
+);
+}
 
 export default App
