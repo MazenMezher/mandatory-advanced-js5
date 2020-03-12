@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Dropbox } from "dropbox";
 import { Redirect } from 'react-router-dom';
 
+// denna component låter oss logga in!
 class LogIn extends Component {
     constructor(props) {
         super(props)
@@ -9,27 +10,27 @@ class LogIn extends Component {
         this.state = {
             LoginDropBox: '',
             accessToken: false,
-
-            myToken: null,
             tokenAvailable: false
         }
     }
 
     componentDidMount() {
-        // get the token from localStorage
+        // hämtar token från localStorage
         let token = localStorage.getItem('token');
         console.log(token);
 
+        // ifall token finns så vill vi uppdatera tokenAvailable så vi kan senare redirecta till /main
         if (token) {
-            this.setState({ myToken: token, tokenAvailable: true });
+            this.setState({ tokenAvailable: true });
             console.log('Token is available');
         }
         else {
-            this.setState({ myToken: null, tokenAvailable: false });
+            this.setState({ tokenAvailable: false });
             console.log('Token is unavailable');
         }
     }
 
+    // Denna funktionen låter oss logga in
     LogIn = () => {
         let CLIENT_ID = 'f7m4wz025tph109';
 

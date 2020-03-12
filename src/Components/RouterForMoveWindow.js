@@ -1,6 +1,7 @@
-import React, { Component, PureComponent } from 'react'
+import React, { PureComponent } from 'react'
 import '../Css/filefolder.css'
 
+// // Denna component är vår routing i move fönstret
 class RouterForMoveWindow extends PureComponent{
   constructor(props){
     super(props)

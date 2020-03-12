@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import '../Css/UlItems.css'
 
+// denna component gör så att den tar oss ett steg tillbaka i path!
+
 class GoBack extends Component {
   goBackwards = () =>{
     if(!this.props.path){

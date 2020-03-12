@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import '../Css/filefolder.css'
 import folderImg from '../Img/folder-img.png';
 
+// Den renderar alla folder som man kan kopiera till 
 class CopyFolderList extends PureComponent{
   constructor(props){
     super(props)

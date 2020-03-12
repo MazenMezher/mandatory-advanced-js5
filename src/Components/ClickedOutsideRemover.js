@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import '../Css/Options.css'
 
+// Hela den komponenten gör bara så att när man klickar utanför dropdown så försvinner dropdown
 class ClickedOutsideRemover extends PureComponent{
   constructor(props){
     super(props)

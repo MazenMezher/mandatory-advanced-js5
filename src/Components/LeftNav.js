@@ -6,6 +6,7 @@ import '../Css/nav.css'
 import '../Css/UlItems.css'
 import { Redirect } from 'react-router-dom'
 
+// denna component visar left nav
 class LeftNav extends Component {
     constructor(props) {
         super(props)
@@ -15,6 +16,7 @@ class LeftNav extends Component {
         }
     }
 
+    // när vi klickar på Start så skicakr den oss tillbaka till /main sidan!
     return_To_Main_Page = () => {
         this.setState({ mainPage: true });
     }
