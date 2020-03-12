@@ -168,7 +168,7 @@ class Main extends Component {
       .then((res) => {
 
         const files = resFolder.matches
-        .filter(x => x[".tag"] !== "folder")
+        .filter(x => x.metadata[".tag"] !== "folder")
         .map(x => {
           const th = res.entries.find(y => y.metadata && y.metadata.id === x.metadata.id);
 
