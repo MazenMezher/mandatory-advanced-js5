@@ -20,12 +20,6 @@ class CopyWindow extends PureComponent{
     this.setState({path:path_display})
   }
 
-  copyIntoCurrentFolder = () =>{
-    const{path_display,copy,closeCopyWindow} = this.props
-    copy(path_display,path_display)
-    closeCopyWindow()
-  }
-
   copyIntoSelectedFolder = () =>{
     const{copy,closeCopyWindow,path_display} = this.props
     const{path} = this.state
@@ -89,7 +83,6 @@ class CopyWindow extends PureComponent{
   ))}
   </ul>
   <div>
-    <button onClick={this.copyIntoCurrentFolder}>Copy into current folder</button>
     <button onClick={this.copyIntoSelectedFolder}>Copy into selected folder</button>
     <button onClick={this.goBack}>Go Back</button>
     <button onClick={this.props.closeCopyWindow}>Cancel</button>

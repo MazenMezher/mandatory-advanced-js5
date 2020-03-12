@@ -299,8 +299,8 @@ class Folders extends Component {
                   </td>
               </div>
               <div className="tdInputDiv" style={{display: 'flex'}}>
-                  <input checked={!!starredFolders} className="checkbox" type="checkbox"  id={folder.id} onClick={this.starFolder.bind(this, folder)} />
-                  </div>
+                <input checked={!!starredFolders} className="checkbox" type="checkbox"  id={folder.id} onClick={this.starFolder.bind(this, folder)} />
+              </div>
               </td>
             </tr>
           )

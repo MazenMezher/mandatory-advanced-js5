@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { Dropbox } from "dropbox";
 import { Redirect } from 'react-router-dom';
 
+import LoginImg from '../Img/LoginAvatarImg.png'
+import '../Css/Login.css';
+
 // denna component låter oss logga in!
 class LogIn extends Component {
     constructor(props) {
@@ -48,7 +51,14 @@ class LogIn extends Component {
 
         return (
             <div>
-                <a onClick={this.LogIn} href={LoginDropBox}>Logga in</a>
+                <div className = 'base-container'>
+                    <div className='container'>
+                        <div className='image'>
+                            <img src={LoginImg} />
+                        </div>
+                        <button className='LoginButton'><a className='LoginBtn' onClick={this.LogIn} href={LoginDropBox}>Login</a></button>
+                    </div>
+                </div>
             </div>
         )
     }
