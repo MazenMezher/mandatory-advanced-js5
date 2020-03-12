@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { expect } from 'chai';
 import { shallow, configure} from 'enzyme';
 import sinon from 'sinon';
 import Adapter from 'enzyme-adapter-react-16';
 import RightNav from './RightNav';
 import LogOut from './LogOut';
-import Header from './Header';
 
 configure ({adapter: new Adapter()})
 

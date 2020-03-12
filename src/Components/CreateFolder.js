@@ -1,6 +1,5 @@
 import React, {PureComponent} from "react";
 import ReactDom from 'react-dom'
-import ClickedOutsideRemover from './ClickedOutsideRemover'
 import  '../Css/filefolder.css'
 
 class CreateFolder extends PureComponent{
@@ -10,9 +9,11 @@ class CreateFolder extends PureComponent{
       folderName: '',
     }
   }
+
   onNameChange=(e)=>{
     this.setState({folderName:e.target.value})
   }
+
   onCreate = () =>{
     this.props.createFolder(this.state.folderName)
     this.props.onCloseCreateFolder()
@@ -37,7 +38,6 @@ class CreateFolder extends PureComponent{
     Cancel
     </button>
     </div>
-    : null}
     </>
     ,document.querySelector('#createFolder')
   )
