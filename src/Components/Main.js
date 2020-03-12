@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import { Dropbox } from "dropbox";
-import LogOut from './LogOut'
 import LeftNav from "./LeftNav"
 import Folders from "./Folders"
 import RightNav from "./RightNav"
 import Header from './Header'
-import {Redirect} from 'react-router-dom'
 
 import '../Css/icons.css'
 import '../Css/mainFiles.css'
@@ -19,27 +17,27 @@ class Main extends Component {
         this.state = {
           folders: [],
           files: [],
-
-          changes: false,
-
           starArray: [],
 
+          changes: false,
+          searchQuery: ""
         }
         this.renameRef = React.createRef();
     }
     setFolderState = (newFolder) =>{
       this.setState({folder: newFolder})
     }
+
     setFileState = (newFile) =>{
       this.setState({file: newFile})
     }
 
-
-
     copy = (original_path, your_path) =>{
+      let real_path = original_path.split('/')
+      real_path = `/${real_path[real_path.length-1]}`
       this.dbx.filesCopy({
         from_path: original_path,
-        to_path: your_path,
+        to_path: `${your_path}${real_path}`,
         autorename: true,
       })
     }
@@ -48,7 +46,6 @@ class Main extends Component {
       this.setState({
         starArray: JSON.parse(window.localStorage.getItem("favorites") || "[]")
       });
-        let log = JSON.parse(window.localStorage.getItem("favorites"));
 
       this.dbx = new Dropbox({ accessToken: localStorage.getItem("token") });
       let path = ""
@@ -58,12 +55,9 @@ class Main extends Component {
       }
       this.dbx.filesListFolder({ path: path })
       .then((resFolder) => {
-        console.log(resFolder)
         this.dbx.filesListFolderLongpoll({cursor: resFolder.cursor})
         .then(response => {
-          console.log('lol')
-          this.setState({changes: true})
-
+          this.setState({changes: response.changes})
         })
 
         const entries = resFolder.entries
@@ -92,8 +86,7 @@ class Main extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-      if (this.state.changes || this.props.match.params.path !== prevProps.match.params.path) {
-        console.log('lol')
+      if (this.state.changes || this.props.match.params.path !== prevProps.match.params.path || (this.state.searchQuery === "" && (prevState.searchQuery !== this.state.searchQuery))) {
 
         let path = ""
         if(this.props.match.params.path){
@@ -103,7 +96,7 @@ class Main extends Component {
         .then((resFolder) => {
 
           this.dbx.filesListFolderLongpoll({cursor: resFolder.cursor})
-          .then(response => this.setState({changes: true}))
+          .then(response => this.setState({changes: response.changes}))
 
           const entries = resFolder.entries
             .filter(x => x[".tag"] === "file")
@@ -126,16 +119,22 @@ class Main extends Component {
             this.setState({ files: files, folders: resFolder.entries, changes:false });
           })
         })
-  }
-
+    }
   }
 
   search_FOLDERS_FILES = (e) => {
-    
-    
+    let resFolder;
+
+    this.setState({ searchQuery: e.target.value });
+
+    if (e.target.value.length === 0) {
+      return;
+    }
+
     this.dbx.filesSearch({ path: '' , query: e.target.value})
     .then(res => {
-      console.log(res)
+
+      resFolder = res;
       let entries = res.matches.map(x => x.metadata);
 
       this.setState({ folders: entries });
@@ -147,22 +146,26 @@ class Main extends Component {
       });
       })
       .then((res) => {
-        this.setState({ files: res.entries });
+        const files = resFolder.matches
+        .filter(x => x.metadata[".tag"] !== "folder")
+        .map(x => {
+          const th = res.entries.find(y => y.metadata && y.metadata.id === x.metadata.id);
+
+          return {
+            metadata: x.metadata,
+            ".tag": "success",
+            thumbnail: th ? th.thumbnail : null,
+          }
+        });
+        this.setState({ files: files });
       });
-    
-    
   }
 
-
-
     render() {
-
-
       const { folders, files } = this.state;
 
         return (
           <div className="App" >
-
           <LeftNav dbx={this.dbx}/>
         <div className={"bigBox"}>
           <Header search_FOLDERS_FILES={this.search_FOLDERS_FILES} path={this.props.match.params.path}/>

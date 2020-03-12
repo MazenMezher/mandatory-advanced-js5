@@ -52,7 +52,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 400px;
+  width: 500px;
   height: 600px;
   background-color: white;
   border-radius: 50px;
@@ -66,11 +66,19 @@
 }
 .selectFolder{
   width: 300px;
-  height: 500px;
+  height: 400px;
   border: 1px solid black;
   margin-top: 10px;
   padding:0;
+  overflow-y: scroll;
 }
 .listOfFolders:nth-child(even){
   background-color: lightgray
+}
+.routing{
+  margin-left: 0;
+}
+.routing:hover{
+  cursor: pointer;
+  color:lightgray;
 }

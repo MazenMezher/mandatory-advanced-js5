@@ -25,7 +25,7 @@ class LeftNav extends Component {
         if (mainPage) return <Redirect to="/" />
 
         return (
-                <div className="sideLeft">
+            <div className="sideLeft">
                 <img src={Logo} />
                 <ul>
                     <li onClick={this.return_To_Main_Page}> Start </li>
@@ -36,7 +36,7 @@ class LeftNav extends Component {
                     <br/>
                     <li> Transfer </li>
                 </ul>
-                </div>
+            </div>
         )
     }
 }

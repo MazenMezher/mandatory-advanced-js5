@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { expect } from 'chai';
 import { shallow, configure} from 'enzyme';
 import sinon from 'sinon';
 import Adapter from 'enzyme-adapter-react-16';
 import RightNav from './RightNav';
-import Header from './Header';
+import LogOut from './LogOut';
 
 configure ({adapter: new Adapter()})
 
@@ -15,11 +15,11 @@ describe('<RightNav />', () => {
     });
 });
 
-describe('<Header />', () => {
-    it('simulates onChange events on <input> Element', () => {
-    const onChange = sinon.spy();
-    const wrapper = shallow(<Header onChange={onChange} />);
-    expect(wrapper.find('input').simulate('change', { target: {
-        value: 'Change function' }
-    }));
-});});
+describe('<LogOut />', () => {
+  it('simulates click events', () => {
+    const onClick = sinon.spy();
+    const wrapper = shallow(<button onClick={onClick} />);
+    wrapper.find('button').simulate('click');
+    expect(onClick).to.have.property('callCount', 1);
+  });
+})

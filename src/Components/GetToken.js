@@ -1,7 +1,5 @@
 import React, { Component } from 'react' 
-
 import { Redirect } from "react-router-dom"
-
 import { updateToken } from './TokenStore';
 
 class GetToken extends Component {
@@ -17,9 +15,7 @@ class GetToken extends Component {
         let fullHash = window.location.hash;
         console.log(fullHash)
         let hash = fullHash.match(/[A-Za-z\d\.\-_]{3,}/g);
-
         this.setState({ activeToken: true });
-
         updateToken(hash[1]);
     }
 
