@@ -13,8 +13,8 @@ function App() {
       <Router>
         <Route exact path="/mandatory-advanced-js5" component={LogIn} />
         <Route path="/mandatory-advanced-js5/auth" component={GetToken} />
-        <Route exact path="/main" component={Main} />
-        <Route exact path="/main/:path+" component={Main} />
+        <Route exact path="/mandatory-advanced-js5/main" component={Main} />
+        <Route exact path="/mandatory-advanced-js5/main/:path+" component={Main} />
       </Router>
     </div>
   );

@@ -44,7 +44,7 @@ class LogIn extends Component {
     render() {
         const { LoginDropBox, tokenAvailable } = this.state;
 
-        if (tokenAvailable) return <Redirect to="/main" />
+        if (tokenAvailable) return <Redirect to="/mandatory-advanced-js5/main" />
 
         return (
             <div>
