@@ -1,9 +1,8 @@
-import React, { Component, PureComponent } from 'react'
+import React, { PureComponent } from 'react'
 import '../Css/filefolder.css'
 import ReactDom from 'react-dom'
 import { Dropbox } from "dropbox";
 import CopyFolderList from './CopyFolderList'
-import folderImg from '../Img/folder-img.png';
 import RouterForCopyWindow from './RouterForCopyWindow'
 
 class CopyWindow extends PureComponent{
@@ -15,28 +14,34 @@ class CopyWindow extends PureComponent{
       routing: [],
     }
   }
+
   clickAnotherFolder = (path_display) =>{
     this.setState({path:path_display})
   }
+
   copyIntoCurrentFolder = () =>{
     const{path_display,copy,closeCopyWindow} = this.props
     copy(path_display,path_display)
     closeCopyWindow()
   }
+
   copyIntoSelectedFolder = () =>{
     const{copy,closeCopyWindow,path_display} = this.props
     const{path} = this.state
     copy(path_display, path)
     closeCopyWindow()
   }
+
   goBack = () =>{
     let path = this.state.path.split('/').filter(path => path !== "")
     let newPath = path.reduce((acc, current, idx ) =>( idx !== path.length-1 ? acc + `/${current}` : acc + "") , "")
     this.setState({path: newPath})
   }
+
   onClickRouting = (route) =>{
     this.setState({path:route})
   }
+
   onStartClick = () =>{
     this.setState({path:""})
   }
@@ -62,8 +67,6 @@ class CopyWindow extends PureComponent{
   }
   }
 
-
-
   render(){
   const{folders,path,routing} = this.state
   console.log(path)
@@ -85,12 +88,11 @@ class CopyWindow extends PureComponent{
   ))}
   </ul>
   <div>
-  <button onClick={this.copyIntoCurrentFolder}>copy into current folder</button>
-  <button onClick={this.copyIntoSelectedFolder}>copy into selected folder</button>
-  <button onClick={this.goBack}>Go Back</button>
-  <button onClick={this.props.closeCopyWindow}>avbryt</button>
+    <button onClick={this.copyIntoCurrentFolder}>copy into current folder</button>
+    <button onClick={this.copyIntoSelectedFolder}>copy into selected folder</button>
+    <button onClick={this.goBack}>Go Back</button>
+    <button onClick={this.props.closeCopyWindow}>avbryt</button>
   </div>
-
 
   </div>
   , document.querySelector('#CopyWindow')
@@ -98,7 +100,5 @@ class CopyWindow extends PureComponent{
 )
 }
 }
-
-
 
 export default CopyWindow

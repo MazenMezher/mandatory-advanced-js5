@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import '../Css/UlItems.css'
 
-
 class GoBack extends Component {
-
   goBackwards = () =>{
     if(!this.props.path){
       return "/main"
@@ -20,7 +18,6 @@ class GoBack extends Component {
           <div onClick={this.goBackwards}>
           <Link className="liDiv" to={this.goBackwards}>Go Back</Link>
           </div>
-
         )
     }
 }

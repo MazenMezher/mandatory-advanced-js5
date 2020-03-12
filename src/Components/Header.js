@@ -1,4 +1,4 @@
-import React, { Component, PureComponent } from 'react'
+import React, { PureComponent } from 'react'
 import LogOut from './LogOut'
 import '../Css/icons.css'
 import '../Css/mainFiles.css'
@@ -14,6 +14,7 @@ class Header extends PureComponent{
       links: []
     }
   }
+
   componentDidMount(){
     if(this.props.path !== undefined){
     let path = this.props.path
@@ -28,22 +29,23 @@ class Header extends PureComponent{
     this.setState({links: newLinks})
   }
   }
+
   componentDidUpdate(prevProps){
     if(prevProps.path !== this.props.path){
-    if(this.props.path !== undefined){
-    let path = this.props.path
-    let links = path.split("/")
+      if(this.props.path !== undefined){
+      let path = this.props.path
+      let links = path.split("/")
 
-    let newLinks = []
-    links.reduce(((acc,currentLink)=>{
-      let a = acc+"/"+currentLink
-      newLinks.push(acc+"/"+currentLink)
-      return acc+"/"+currentLink
-    }),"")
-    this.setState({links: newLinks})
+      let newLinks = []
+      links.reduce(((acc,currentLink)=>{
+        let a = acc+"/"+currentLink
+        newLinks.push(acc+"/"+currentLink)
+        return acc+"/"+currentLink
+      }),"")
+      this.setState({links: newLinks})
+    }
   }
 }
-  }
 
   render(){
     const{links} = this.state
@@ -53,11 +55,9 @@ class Header extends PureComponent{
         <span className="pathing"><Link style={{color:'white'}} to={`/main`}>{"main>"}</Link></span>
         {links.map(link => {
           let realLink = link.split('/')
-          console.log(realLink[realLink-1])
 
           return (<span className="pathing"><Link style={{color:'white'}}  to={`/main${link}`}>{`${realLink[realLink.length-1]}>`}</Link></span>)
         })}
-
 
           <input
             className="searchField"
@@ -67,10 +67,6 @@ class Header extends PureComponent{
           />
           <LogOut/>
       </header>
-
-
 )}}
-
-
 
 export default Header

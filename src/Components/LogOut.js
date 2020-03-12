@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 import { updateToken } from './TokenStore';
 import { Redirect } from 'react-router-dom';
 

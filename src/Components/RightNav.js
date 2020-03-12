@@ -7,8 +7,7 @@ import '../Css/mainFiles.css'
 import '../Css/nav.css'
 import '../Css/UlItems.css'
 
-
- class RightNav extends Component {
+class RightNav extends Component {
     constructor(props) {
         super(props)
 
@@ -17,6 +16,7 @@ import '../Css/UlItems.css'
         }
         this.inputRef = React.createRef();
     }
+
     //simulera som om man klickade på input type fil
     createFile = () =>{
       this.inputRef.current.click();
@@ -25,12 +25,13 @@ import '../Css/UlItems.css'
     //shows the window when click on create folder
     onShowCreateFolder= () =>{
       this.setState({showCreateFolder: true})
-
     }
+
     //closes the window when click on create folder
     onCloseCreateFolder = () =>{
       this.setState({showCreateFolder: false})
     }
+
     //Upload file
     onChangeFile = () =>{
       const{files} = this.props
@@ -66,12 +67,10 @@ import '../Css/UlItems.css'
         let allFolders = [...folders, newFolder]
         this.props.setFolderState(allFolders)
       })
-
       }
       
     render() {
         const{showCreateFolder} = this.state
-        const{createFolder,onChangeFile,inputRef} = this.props
         return (
             <div className="sidebarRight">
             <ul>

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 import { Dropbox } from "dropbox";
 import { Redirect } from 'react-router-dom';
 
@@ -32,14 +31,11 @@ class LogIn extends Component {
     }
 
     LogIn = () => {
-
-        let CLIENT_ID = '36rhe8urwdavjdu';
+        let CLIENT_ID = '1rw2bkl9h8tl2yb';
 
         let dbx = new Dropbox({ clientId: CLIENT_ID });
         let LocalHost = 'http://localhost:3000/auth';
         let authUrl = dbx.getAuthenticationUrl(LocalHost);
-
-        console.log(authUrl);
 
         this.setState({ LoginDropBox: authUrl});
     }
