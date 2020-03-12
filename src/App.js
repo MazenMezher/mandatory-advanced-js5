@@ -7,7 +7,7 @@ import Main from "./Components/Main";
 import LogIn from "./Components/LogIn";
 import GetToken from "./Components/GetToken";
 
-function App() {
+function App() { 
   return (
     <div className="App">
       <Router>
