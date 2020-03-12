@@ -279,6 +279,7 @@ class Folders extends Component {
             <tr>
               <td>
               <div style={{ display: 'flex'}}>
+              <input checked={!!starredFolders} className="checkbox" type="checkbox"  id={folder.id} onClick={this.starFolder.bind(this, folder)} />
               <img src={folderThumbnail} style={{ height: '42px', width: '42px' }} alt=""/>
 
               <Link to={`/main${folder.path_display}`}>
@@ -297,9 +298,6 @@ class Folders extends Component {
                       copy={this.props.copy}
                     />
                   </td>
-              </div>
-              <div className="tdInputDiv" style={{display: 'flex'}}>
-                <input checked={!!starredFolders} className="checkbox" type="checkbox"  id={folder.id} onClick={this.starFolder.bind(this, folder)} />
               </div>
               </td>
             </tr>
