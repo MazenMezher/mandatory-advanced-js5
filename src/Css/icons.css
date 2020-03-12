@@ -1,0 +1,13 @@
+.Logo{
+    
+    height: 40px;
+    width: 40px;
+    margin: 10px;
+    transition: all 0.5s;
+    transition-timing-function: ease-in-out;
+}
+
+.Logo{
+    cursor: pointer;
+    transform: scale(1.2);
+}

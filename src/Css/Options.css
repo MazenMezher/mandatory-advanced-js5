@@ -1,0 +1,121 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+}
+.dropdown-content {
+  border-radius: 5px;
+  position: absolute;
+  min-width: 200px;
+  max-height: 50px;
+  overflow-y: scroll;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  background-color: white;
+  z-index: 1;
+  left:-50px;
+}
+
+
+
+
+.dropdown-content{
+  margin: 10px;
+}
+.dropMenu{
+  position: absolute;
+  top:0;
+  height: 100%;
+  width: 100%;
+}
+.darkenOutArea{
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top:0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(142, 142, 142,0.6);
+}
+.confirmDeleteWindow{
+  height: 300px;
+  width: 600px;
+  background-color: white;
+  border-radius: 50px;
+  position: absolute;
+  font-size: 20px;
+
+}
+.deleteText{
+  transform: translateX(80px);
+  margin-bottom: 50px;
+  text-decoration: none;
+
+
+}
+.deleteButton{
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  display: flex;
+}
+.delete{
+  color: white;
+  margin-left: 50px;
+  padding: 10px 20px;
+  background-color: blue;
+  border-radius: 10px;
+
+  cursor: pointer;
+}
+.delete:hover{
+  background-color: lightblue;
+}
+.renameWindow{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 200px;
+  background-color: white;
+  border-radius: 50px;
+  transform: translate(-50%, -50%);
+  -webkit-box-shadow: 8px 7px 0px 2000px rgba(128,128,128,0.75);
+  -moz-box-shadow: 8px 7px 0px 2000px rgba(128,128,128,0.75);
+  box-shadow: 8px 7px 0px 2000px rgba(128,128,128,0.75);
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+
+}
+.renameButtons{
+  display: flex;
+  width: 150px;
+  justify-content: space-between;
+}
+.moveWindow{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 600px;
+  background-color: white;
+  border-radius: 50px;
+  transform: translate(-50%, -50%);
+  -webkit-box-shadow: 8px 7px 0px 2000px rgba(128,128,128,0.75);
+  -moz-box-shadow: 8px 7px 0px 2000px rgba(128,128,128,0.75);
+  box-shadow: 8px 7px 0px 2000px rgba(128,128,128,0.75);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+}
+.folderSelect{
+  width: 300px;
+  height: 500px;
+  border: 1px solid black;
+  margin-top: 10px;
+  padding:0;
+}
