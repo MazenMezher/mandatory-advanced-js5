@@ -36,6 +36,7 @@ class LeftNav extends Component {
                     <br/>
                     <li> Transfer </li>
                 </ul>
+                <p className="sideTextLeft">Upcoming features</p>
             </div>
         )
     }
