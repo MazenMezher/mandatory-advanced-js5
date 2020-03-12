@@ -23,7 +23,6 @@ class CreateFolder extends PureComponent{
     this.props.onCloseCreateFolder()
   }
 
-
   render(){
   return ReactDom.createPortal(
     <>
