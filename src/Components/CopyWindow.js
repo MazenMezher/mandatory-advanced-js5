@@ -22,7 +22,11 @@ class CopyWindow extends PureComponent{
 
   copyIntoCurrentFolder = () =>{
     const{path_display,copy,closeCopyWindow} = this.props
-    copy(path_display,path_display)
+    let newPath = []
+    newPath = path_display.split('/').filter(path => path !== "")
+    newPath.pop()
+    console.log(newPath)
+    copy(path_display,`/${newPath}`)
     closeCopyWindow()
   }
 

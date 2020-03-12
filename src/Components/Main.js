@@ -39,6 +39,8 @@ class Main extends Component {
     copy = (original_path, your_path) =>{
       let real_path = original_path.split('/')
       real_path = `/${real_path[real_path.length-1]}`
+      console.log(your_path)
+      console.log(real_path)
       this.dbx.filesCopy({
         from_path: original_path,
         to_path: `${your_path}${real_path}`,
