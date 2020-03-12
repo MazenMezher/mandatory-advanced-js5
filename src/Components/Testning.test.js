@@ -6,8 +6,11 @@ import Adapter from 'enzyme-adapter-react-16';
 import RightNav from './RightNav';
 import LogOut from './LogOut';
 
+// Här har vi vår Testing komponent!
+
 configure ({adapter: new Adapter()})
 
+// Testing för rendering för <li> i <RightNav />
 describe('<RightNav />', () => {
     it('renders four <li> Elements', () => {
         const wrapper = shallow(<RightNav />);
@@ -15,6 +18,7 @@ describe('<RightNav />', () => {
     });
 });
 
+// Testar om de går att klicka på log out knappen! i <LogOut /> komponenten!
 describe('<LogOut />', () => {
   it('simulates click events', () => {
     const onClick = sinon.spy();

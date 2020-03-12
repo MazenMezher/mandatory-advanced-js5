@@ -24,14 +24,18 @@ class Main extends Component {
         }
         this.renameRef = React.createRef();
     }
+
+    // vi skickar den som props till Folders.js som sedan hämtar data och vi sparar den data här i state
     setFolderState = (newFolder) =>{
       this.setState({folder: newFolder})
     }
 
+    // vi skickar den som props till Folders.js som sedan hämtar data och vi sparar den data här i state
     setFileState = (newFile) =>{
       this.setState({file: newFile})
     }
 
+    // funktionen kopierar filer och folders!
     copy = (original_path, your_path) =>{
       let real_path = original_path.split('/')
       real_path = `/${real_path[real_path.length-1]}`
@@ -42,6 +46,7 @@ class Main extends Component {
       })
     }
 
+    // Den renderar ut våra filer och folders
     componentDidMount() {
       this.setState({
         starArray: JSON.parse(window.localStorage.getItem("favorites") || "[]")
@@ -53,6 +58,7 @@ class Main extends Component {
       if(this.props.match.params.path){
         path = `/${this.props.match.params.path}`
       }
+
       this.dbx.filesListFolder({ path: path })
       .then((resFolder) => {
         this.dbx.filesListFolderLongpoll({cursor: resFolder.cursor})
@@ -82,9 +88,9 @@ class Main extends Component {
           this.setState({ files: files, folders: resFolder.entries});
         })
       })
-
     }
 
+    // den renderar våra filer och folders. Om vår url, dropbox innehåll och search funktion ändras
     componentDidUpdate(prevProps, prevState) {
       if (this.state.changes || this.props.match.params.path !== prevProps.match.params.path || (this.state.searchQuery === "" && (prevState.searchQuery !== this.state.searchQuery))) {
 
@@ -122,6 +128,7 @@ class Main extends Component {
     }
   }
 
+  // denna funktionen gör så att när vi har sökt något så renderar den ut de vi har sökt, beroende om de är filer eller folders
   search_FOLDERS_FILES = (e) => {
     let resFolder;
 
@@ -161,6 +168,7 @@ class Main extends Component {
       });
   }
 
+  // här visas allt innehåll på sidan
     render() {
       const { folders, files } = this.state;
 

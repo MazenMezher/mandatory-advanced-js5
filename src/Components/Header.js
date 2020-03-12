@@ -7,6 +7,7 @@ import '../Css/UlItems.css'
 
 import {Link} from 'react-router-dom'
 
+// denna component visar crumbs i vår header
 class Header extends PureComponent{
   constructor(props){
     super(props)

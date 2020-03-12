@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import folderImg from '../Img/folder-img.png';
 
+// Denna komponenten renderar ut folders i fönstret som man kan välja för att flytta våra filer/folders
 class SelectFolder extends Component {
     choosepath = () =>{
         this.props.setPath(this.props.folder.path_display)

@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import '../Css/filefolder.css'
 
+// Denna component är vår routing i copy fönstret
 class RouterForCopyWindow extends PureComponent{
   constructor(props){
     super(props)

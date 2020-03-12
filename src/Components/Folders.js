@@ -16,6 +16,7 @@ class Folders extends Component {
     }
   }
 
+  // denna funktionen laddar ner filer
   downloadFile = (file) => {
     this.props.dbx.filesDownload({path: file})
     .then(res => {
@@ -25,15 +26,17 @@ class Folders extends Component {
     });
   }
 
+  // denna funktion har koppling med rename, de vi skriver vi sparar de i state
   updateFolderName = e => {
     this.setState({ folderRename: e.target.value });
   }
 
+  // denna funktion har koppling med rename, de vi skriver vi sparar de i state
   updateFileName = e => {
     this.setState({ fileRename: e.target.value });
   }
 
-  // delets files and closes delete window
+  // tar bort filer och stänger delete window
   onDelete = (path_delete, tag) =>{
     if(tag === 'folder'){
     const{folders} = this.props
@@ -68,6 +71,7 @@ class Folders extends Component {
   }
   }
 
+  // funktionen renama för foldern
   renameFolders = (path, id) => {
     const newName = this.state.folderRename;
     let newfavoritesFolders = []
@@ -92,6 +96,7 @@ class Folders extends Component {
     })
   }
 
+  // funktionen renama för files
   renameFiles = (path, id) => {
     const newName = this.state.fileRename;
     let newfavoritesFiles = []
@@ -128,6 +133,7 @@ class Folders extends Component {
     })
   }
 
+  // funktionen sparar alla markerade filer med stjärna i localStorage
   starFile = (file) => {
     let newStarArray;
     const { starArray } = this.state;
@@ -145,24 +151,25 @@ class Folders extends Component {
       })
 }
 
-starFolder = (folder) => {
-  let newstarArrayFolders;
-  const { starArrayFolders } = this.state;
+// funktionen sparar alla markerade folders med stjärna i localStorage
+  starFolder = (folder) => {
+    let newstarArrayFolders;
+    const { starArrayFolders } = this.state;
 
-  if(starArrayFolders.find(y => y.id === folder.id)) {
-    newstarArrayFolders = starArrayFolders.filter(y => y.id !== folder.id)
-  }else {
-    newstarArrayFolders = [...this.state.starArrayFolders, folder];
+    if(starArrayFolders.find(y => y.id === folder.id)) {
+      newstarArrayFolders = starArrayFolders.filter(y => y.id !== folder.id)
+    }else {
+      newstarArrayFolders = [...this.state.starArrayFolders, folder];
+    }
+
+    let favoritesFolders = JSON.parse(localStorage.getItem('favoritesFolders'));
+    localStorage.setItem('favoritesFolders', JSON.stringify(newstarArrayFolders));
+      this.setState({
+        starArrayFolders: newstarArrayFolders
+      })
   }
 
-  let favoritesFolders = JSON.parse(localStorage.getItem('favoritesFolders'));
-  localStorage.setItem('favoritesFolders', JSON.stringify(newstarArrayFolders));
-    this.setState({
-      starArrayFolders: newstarArrayFolders
-    })
-  }
-
-
+  // ifall de finns något i localStorage så sparar vi de i state --> starArray och starArrayFolders!
   componentDidMount() {
   this.setState({
     starArray: JSON.parse(window.localStorage.getItem("favorites") || "[]"),
@@ -170,10 +177,12 @@ starFolder = (folder) => {
   });
 }
 
+  // här renderar vi ut alla våra filer och folders, samt favorit filer och favorit folders!
   render() {
       const{ files, folders } = this.props
       const{ URL } = this.state
 
+      // denna variabel renderar ut våra filer!
       let minaFiler = files.map(file => {
           let image = `data:image/jpeg;base64,${file.thumbnail}`;
           let fileName
@@ -253,8 +262,9 @@ starFolder = (folder) => {
               </td>
             </tr>
           )
-        })
+      })
 
+      // denna variabel renderar ut våra folders!
       let minaFolders = folders.map(folder => {
           // render img icons to folders !
           const type = folder['.tag'];
@@ -295,8 +305,9 @@ starFolder = (folder) => {
             </tr>
           )
         }
-        })
+      })
 
+      // denna variabel renderar ut våra favorit filer!
       let favFiles = this.state.starArray.map(favfile => {
         let image = `data:image/jpeg;base64,${favfile.thumbnail}`;
 
@@ -327,6 +338,7 @@ starFolder = (folder) => {
           )
       });
 
+      // denna variabel renderar ut våra favorit folders!
         let favFolders = this.state.starArrayFolders.map(favfolder => {
           let folderName;
           const type = favfolder['.tag'];
@@ -343,12 +355,13 @@ starFolder = (folder) => {
                     <Link to={`/main${favfolder.path_display}`}>
                       {favfolder.name}
                     </Link>
-              </div>
-              </td>
+                  </div>
+                </td>
               </tr>
               )
             }
           })
+
           return(
             <div className="files">
             <table className="table">
@@ -369,7 +382,6 @@ starFolder = (folder) => {
 
               <h2 style={{ marginTop: '10%' }} >Favorite Files!</h2>
                 {favFiles}
-
             </tbody>
             </table>
         </div>
