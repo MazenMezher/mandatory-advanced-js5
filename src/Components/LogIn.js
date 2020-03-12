@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { Dropbox } from "dropbox";
 import { Redirect } from 'react-router-dom';
+import '../Css/Login.css'
+import LoginImg from '../LoginAvatarImg.png'
 
+// denna component låter oss logga in!
 class LogIn extends Component {
     constructor(props) {
         super(props)
@@ -9,34 +12,31 @@ class LogIn extends Component {
         this.state = {
             LoginDropBox: '',
             accessToken: false,
-
-            myToken: null,
             tokenAvailable: false
         }
     }
 
     componentDidMount() {
-        // get the token from localStorage
+        // hämtar token från localStorage
         let token = localStorage.getItem('token');
         console.log(token);
 
+        // ifall token finns så vill vi uppdatera tokenAvailable så vi kan senare redirecta till /main
         if (token) {
-            this.setState({ myToken: token, tokenAvailable: true });
+            this.setState({ tokenAvailable: true });
             console.log('Token is available');
         }
         else {
-            this.setState({ myToken: null, tokenAvailable: false });
+            this.setState({ tokenAvailable: false });
             console.log('Token is unavailable');
         }
     }
 
+    // Denna funktionen låter oss logga in
     LogIn = () => {
-<<<<<<< HEAD
+
 
         let CLIENT_ID = 'lkpumaokfkbkx9k';
-=======
-        let CLIENT_ID = '1rw2bkl9h8tl2yb';
->>>>>>> 9d97512b422fae07f340c40a959e56f58ace190c
 
         let dbx = new Dropbox({ clientId: CLIENT_ID });
         let LocalHost = 'http://localhost:3000/auth';
@@ -52,7 +52,14 @@ class LogIn extends Component {
 
         return (
             <div>
-                <a onClick={this.LogIn} href={LoginDropBox}>Logga in</a>
+                <div className = 'base-container'>
+                  <div className='container'>
+                        <div className='image'>
+                            <img src={LoginImg} />
+                        </div>
+                        <button className='LoginButton'><a className='LoginBtn' onClick={this.LogIn} href={LoginDropBox}>Login</a></button>
+                  </div>
+                </div>
             </div>
         )
     }

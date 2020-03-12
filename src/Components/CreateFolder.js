@@ -2,6 +2,7 @@ import React, {PureComponent} from "react";
 import ReactDom from 'react-dom'
 import  '../Css/filefolder.css'
 
+// denna component renderar ut window för att kunna skapa folder
 class CreateFolder extends PureComponent{
   constructor(props){
     super(props)

@@ -6,6 +6,7 @@ import { Dropbox } from "dropbox";
 import SelectFolder from './SelectFolder'
 import RouterForMoveWindow from './RouterForMoveWindow'
 
+// Denna komponenten renderar ut föstret när vi vill flytta folder/filer
 class MoveWindow extends PureComponent{
   constructor(props){
     super(props)

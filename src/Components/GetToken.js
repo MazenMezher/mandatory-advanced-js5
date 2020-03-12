@@ -11,9 +11,10 @@ class GetToken extends Component {
         }
     }
 
+    // när sidan laddas upp för första gången när vi håller på att logga in, så vill vi spara själva token i vår TokenStore.js
+    // Samtidigt så gör vi så att vi redirectar till /main
     componentDidMount() {
         let fullHash = window.location.hash;
-        console.log(fullHash)
         let hash = fullHash.match(/[A-Za-z\d\.\-_]{3,}/g);
         this.setState({ activeToken: true });
         updateToken(hash[1]);
@@ -25,8 +26,8 @@ class GetToken extends Component {
         if (activeToken) return <Redirect to="/main" />
 
         return (
-            <div>
-            </div>
+            <>
+            </>
         )
     }
 }

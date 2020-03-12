@@ -7,6 +7,7 @@ import '../Css/mainFiles.css'
 import '../Css/nav.css'
 import '../Css/UlItems.css'
 
+// Det är vår nav som finns i höger sidan!
 class RightNav extends Component {
     constructor(props) {
         super(props)
@@ -22,17 +23,17 @@ class RightNav extends Component {
       this.inputRef.current.click();
     }
 
-    //shows the window when click on create folder
+    // Visar fönstret när man klickar på skapa folder
     onShowCreateFolder= () =>{
       this.setState({showCreateFolder: true})
     }
 
-    //closes the window when click on create folder
+    // Stänger fönstret när man klickar på skapa folder
     onCloseCreateFolder = () =>{
       this.setState({showCreateFolder: false})
     }
 
-    //Upload file
+    //Ladda upp file
     onChangeFile = () =>{
       const{files} = this.props
       let file = this.inputRef.current.files[0]
@@ -52,7 +53,7 @@ class RightNav extends Component {
       }
     }
 
-    //Create Folder
+    //Skapa Folders
     createFolder = (name) =>{
       const{folders} = this.props
       let path = `/${name}`

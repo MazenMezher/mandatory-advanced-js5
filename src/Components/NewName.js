@@ -3,6 +3,7 @@ import ReactDom from 'react-dom'
 
 import '../Css/Options.css'
 
+// Denna komponenten renderar ut ett fönster som tillåter oss att döpa om filer/folder
 function NewName({ update, closeRename, hideRename }){
   return ReactDom.createPortal(
     <div className="renameWindow">
@@ -11,7 +12,7 @@ function NewName({ update, closeRename, hideRename }){
       <br/>
       <div className="renameButtons">
         <button className="tdButton" onClick={closeRename}>Rename</button>
-        <button className="tdButton" onClick={hideRename}>avbryt</button>
+        <button className="tdButton" onClick={hideRename}>Cancel</button>
       </div>
     </div>
     , 

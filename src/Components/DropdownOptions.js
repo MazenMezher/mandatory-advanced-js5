@@ -7,6 +7,9 @@ import MoveWindow from './MoveWindow'
 
 import '../Css/Options.css'
 
+// Denna component gör så att när jag klickar på sakerna som finns inne i de tre punkterna så kommer fram några options!
+// Klickar man på en av dessa options så ändras boolean som finns i this.state till true och då skickar vi props till de andra komponenter!
+
 class DropdownOptions extends PureComponent{
   constructor(props){
     super(props)
@@ -18,12 +21,12 @@ class DropdownOptions extends PureComponent{
     }
   }
 
-  // Shows the window asking the user if they want to delete
+  // Visar fönstret som frågar ifall användaren vill ta bort
   onDeleteButtonClicked = () =>{
     this.setState({deleteButtonClicked: true})
   }
 
-  // closes the delete window if you click avbryt or X
+  // Stänger delete fönstret om användaren klickar på avbryt
   onCloseDeleteWindow = () =>{
     this.setState({deleteButtonClicked: false})
   }

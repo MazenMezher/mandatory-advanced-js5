@@ -67,6 +67,17 @@ main{
     color: black;
 }
 
+.sideTextLeft{
+    float: left;
+    transform: rotate(90deg);
+    transform-origin: top left;
+    margin-left: 4rem;
+    font-size: 25px;
+    text-decoration: underline;
+    margin-right: -200px;
+    color: black;
+}
+
 .buttonField {
     color: rgba(253, 253, 253, 0.856);
     border: 1px solid  rgb(253, 253, 253);

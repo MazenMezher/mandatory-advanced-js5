@@ -5,6 +5,7 @@ import { Dropbox } from "dropbox";
 import CopyFolderList from './CopyFolderList'
 import RouterForCopyWindow from './RouterForCopyWindow'
 
+// Denna component renderar ut själva fönstret där man kan välja vilka folder man vill kopiera till
 class CopyWindow extends PureComponent{
   constructor(props){
     super(props)
@@ -88,10 +89,10 @@ class CopyWindow extends PureComponent{
   ))}
   </ul>
   <div>
-    <button onClick={this.copyIntoCurrentFolder}>copy into current folder</button>
-    <button onClick={this.copyIntoSelectedFolder}>copy into selected folder</button>
+    <button onClick={this.copyIntoCurrentFolder}>Copy into current folder</button>
+    <button onClick={this.copyIntoSelectedFolder}>Copy into selected folder</button>
     <button onClick={this.goBack}>Go Back</button>
-    <button onClick={this.props.closeCopyWindow}>avbryt</button>
+    <button onClick={this.props.closeCopyWindow}>Cancel</button>
   </div>
 
   </div>
