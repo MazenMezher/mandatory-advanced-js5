@@ -111,7 +111,7 @@ class Main extends Component {
           .then(response => this.setState({changes: response.changes}))
 
           const entries = resFolder.entries
-            .filter(x => x[".tag"] === "file")
+            .filter(x => x.metadata[".tag"] === "file")
             .map((x) => ({ path: x.path_display }));
           return this.dbx.filesGetThumbnailBatch({
             entries: entries,
