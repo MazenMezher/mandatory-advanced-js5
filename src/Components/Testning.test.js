@@ -4,23 +4,23 @@ import { shallow, configure} from 'enzyme';
 import sinon from 'sinon';
 import Adapter from 'enzyme-adapter-react-16';
 import RightNav from './RightNav';
-import LogOut from './LogOut';
 import Header from './Header';
 
 configure ({adapter: new Adapter()})
 
 describe('<RightNav />', () => {
     it('renders four <li> Elements', () => {
-      const wrapper = shallow(<RightNav />);
-      expect(wrapper.find('li')).to.have.lengthOf(4);
+        const wrapper = shallow(<RightNav />);
+        expect(wrapper.find('li')).to.have.lengthOf(4);
+
     });
 });
 
-describe('<LogOut />', () => {
-  it('simulates click events', () => {
-    const onClick = sinon.spy();
-    const wrapper = shallow(<button onClick={onClick} />);
-    wrapper.find('button').simulate('click');
-    expect(onClick).to.have.property('callCount', 1);
-  });
-})
+describe('<Header />', () => {
+  it('simulates onChange events on <input> Element', () => {
+    const onChange = sinon.spy();
+    const wrapper = shallow(<Header onChange={onChange} />);
+    expect(wrapper.find('input').simulate('change', { target: {
+      value: 'Change function' }
+    }));
+});});

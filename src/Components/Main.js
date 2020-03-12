@@ -149,11 +149,7 @@ class Main extends Component {
 
     this.dbx.filesSearch({ path: '' , query: e.target.value})
     .then(res => {
-
-
-
       console.log(res)
-
       resFolder = res;
       let entries = res.matches.map(x => x.metadata);
 
@@ -168,7 +164,7 @@ class Main extends Component {
       .then((res) => {
 
         const files = resFolder.matches
-        .filter(x => x[".tag"] !== "folder")
+        .filter(x => x.metadata[".tag"] !== "folder")
         .map(x => {
           const th = res.entries.find(y => y.metadata && y.metadata.id === x.metadata.id);
 
@@ -178,12 +174,9 @@ class Main extends Component {
             thumbnail: th ? th.thumbnail : null,
           }
         });
-
         console.log(files);
         this.setState({ files: files });
       });
-
-
   }
 
 
