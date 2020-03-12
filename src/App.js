@@ -18,6 +18,5 @@ function App() {
       </Router>
     </div>
   );
-}
 
-export default App;
+export default App
